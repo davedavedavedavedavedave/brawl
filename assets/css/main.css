@@ -156,6 +156,7 @@ h2 {
 .post:nth-of-type(4n+4)::before {
   background-image: url(img/visual-3.jpg);
 }
+.post > div,
 .post > h2,
 .post > h3,
 .post > h4,
