@@ -1,0 +1,217 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: "PT Sans";
+  background-color: #1E0700;
+  color: rgba(255, 255, 255, .8);
+}
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+}
+
+h2 {
+  font-family: Prociono;
+  font-weight: normal;
+  margin: 0 0 .7rem;
+}
+
+.siteHeader {
+  background: #621800;
+  color: rgba(255, 255, 255, 1)
+}
+.siteHeader h1 {
+  background-image: url(img/logo.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-indent: -999em;
+  height: calc(100vh - 4rem);
+  margin: 0;
+}
+.siteNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+}
+.siteNav li {
+  margin: .8rem 0;
+  padding: 0;
+  border: 1px solid rgba(174, 81, 51, 1);
+  border-top: 0;
+  border-right: 0;
+}
+.siteNav ul a {
+  display: block;
+  margin: 0 0 2px 2px;
+  background-color: rgba(174, 81, 51, 0);
+  background-image: linear-gradient(90deg, rgba(174, 81, 51, 1), rgba(174, 81, 51, 0));
+  background-size: 20% 100%;
+  background-repeat: no-repeat;
+  text-align: center;
+  text-decoration: none;
+  transition: background-size .2s ease, background-color .2s ease;
+  padding: .2em .3em;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+.siteNav ul a:hover,
+.siteNav ul a:focus {
+  background-size: 100% 100%;
+}
+.siteNav ul a:active {
+  background-color: rgba(174, 81, 51, 1);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }  }
+.showNav {
+  display: block;
+  height: 3rem;
+  text-indent: -999em;
+  width: 3rem;
+  margin: 0 auto 1rem;
+  position: relative;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,.3);
+  border: 1px solid rgba(0,0,0,0.5);
+  transition: border .4s ease;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: .5s;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+.showNav::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+  transform-origin: 50% 50%;
+  transform: translate(-50%, -50%) translateY(-.35rem) rotate(45deg);
+  border: 2px solid white;
+  border-top: 0;
+  border-left: 0;
+}
+.showNav:hover,
+.showNav:focus {
+  border-width: 1.5rem;
+  outline: none;
+}
+
+.post {
+  font-size: 18px;
+  padding: 0 1rem 1rem;
+  background-color: #892F12;
+}
+.post:nth-of-type(even) {
+  background-color: #3E0F00;
+}
+.post::before {
+  content: "";
+  display: block;
+  margin: 0 -1rem 1rem;
+  height: 30vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.post:nth-of-type(3n+1)::before {
+  background-image: url(img/visual-0.jpg);
+}
+.post:nth-of-type(3n+2)::before {
+  background-image: url(img/visual-1.jpg);
+}
+.post:nth-of-type(3n+3)::before {
+  background-image: url(img/visual-3.jpg);
+}
+
+.siteFooter {
+  background-color: #1E0700;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.siteFooter a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  opacity: .8;
+}
+.siteFooter a:not(:first-child) {
+  margin-left: .5em;
+}
+.siteFooter a:focus,
+.siteFooter a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+.icon-mail,
+.icon-fb,
+.icon-yt {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+}
+.icon-mail {
+  padding-left: 2em;
+  background-image: url(img/icons/mail.png);
+}
+.icon-fb {
+  padding-left: 1.7em;
+  background-image: url(img/icons/fb.png);
+}
+.icon-yt {
+  padding-left: 2.3em;
+  background-image: url(img/icons/yt.png);
+}
+
+.map {
+  border: 0;
+  margin: 3rem -1rem -1rem;
+  width: calc(100% + 2rem);
+  height: 40vh;
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  body {
+    margin-left: 23rem;
+  }
+  .siteHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 23rem;
+  }
+  .siteHeader h1 {
+    background-position: center top;
+    margin: 1rem;
+  }
+  .siteNav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .siteNav li:last-child {
+    margin-bottom: 0;
+  }
+  .showNav {
+    display: none;
+  }
+  .post:first-of-type::before {
+    background-position: center;
+    background-attachment: scroll;
+  }
+}
+
+.post > h2,
+.post > p {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
