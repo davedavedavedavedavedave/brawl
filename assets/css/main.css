@@ -1,10 +1,22 @@
+@font-face {
+  font-family: 'Cloister';
+  src: url('fonts/CloisterBlack.eot');
+  src: url('fonts/CloisterBlack.eot?#iefix') format('embedded-opentype'),
+       url('fonts/CloisterBlack.woff') format('woff'),
+       url('fonts/CloisterBlack.ttf') format('truetype'),
+       url('fonts/CloisterBlack.svg#CloisterBlack') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
 body, html {
   margin: 0;
   padding: 0;
   min-height: 100%;
   font-family: "PT Sans";
   background-color: #1E0700;
-  color: rgba(255, 255, 255, .8);
+  color: rgba(255, 255, 255, .9);
 }
 *, ::before, ::after {
   box-sizing: border-box;
@@ -14,7 +26,8 @@ a {
 }
 
 h2 {
-  font-family: Prociono;
+  font-family: Cloister;
+  font-size: 2.3em;
   font-weight: normal;
   margin: 0 0 .7rem;
 }
@@ -29,8 +42,14 @@ h2 {
   background-position: center;
   background-repeat: no-repeat;
   text-indent: -999em;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 7rem);
   margin: 0;
+}
+.date {
+  font-family: Cloister;
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 3rem;
 }
 .siteNav ul {
   list-style: none;
@@ -57,6 +76,7 @@ h2 {
   padding: .2em .3em;
   font-size: 1.3rem;
   text-transform: uppercase;
+  letter-spacing: .1em;
 }
 .siteNav ul a:hover,
 .siteNav ul a:focus {
@@ -71,18 +91,21 @@ h2 {
   height: 3rem;
   text-indent: -999em;
   width: 3rem;
-  margin: 0 auto 1rem;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  margin-left: -1.5rem;
+  bottom: 7rem;
   border-radius: 50%;
   background-color: rgba(0,0,0,.3);
-  border: 1px solid rgba(0,0,0,0.5);
-  transition: border .4s ease;
+  transition: box-shadow .4s ease;
   opacity: 0;
   animation-name: fadeIn;
   animation-fill-mode: forwards;
   animation-duration: .5s;
   animation-delay: 1s;
   animation-timing-function: ease;
+  box-sizing: content-box;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
 }
 .showNav::before {
   content: "";
@@ -99,7 +122,7 @@ h2 {
 }
 .showNav:hover,
 .showNav:focus {
-  border-width: 1.5rem;
+  box-shadow: 0 0 0 .2rem black;
   outline: none;
 }
 
@@ -115,18 +138,34 @@ h2 {
   content: "";
   display: block;
   margin: 0 -1rem 1rem;
-  height: 30vh;
+  height: 40vh;
+  background-color: rgba(0,0,0,.5);
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
 }
-.post:nth-of-type(3n+1)::before {
+.post:nth-of-type(4n+1)::before {
   background-image: url(img/visual-0.jpg);
 }
-.post:nth-of-type(3n+2)::before {
+.post:nth-of-type(4n+2)::before {
   background-image: url(img/visual-1.jpg);
 }
-.post:nth-of-type(3n+3)::before {
+.post:nth-of-type(4n+3)::before {
+  background-image: url(img/visual-2.jpg);
+}
+.post:nth-of-type(4n+4)::before {
   background-image: url(img/visual-3.jpg);
+}
+.post > h2,
+.post > h3,
+.post > h4,
+.post > ol,
+.post > ul,
+.post > form,
+.post > p {
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .siteFooter {
@@ -176,6 +215,57 @@ h2 {
   display: block;
 }
 
+.set {
+  margin-bottom: .5rem;
+}
+button,
+textarea,
+input[type="text"],
+input[type="mail"] {
+  background: rgba(255,255,255,.9);
+  color: #1E0700;
+  display: block;
+  width: 100%;
+  border: 1px solid #1E0700;
+  font-family: "PT Sans";
+  font-size: 1.1rem;
+  padding: .3rem;
+  transition: box-shadow .2s ease;
+  box-shadow: 0 0 0 2px rgba(174, 81, 51, 0);
+}
+button:hover,
+textarea:hover,
+input[type="text"]:hover,
+input[type="mail"]:hover,
+button:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="mail"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(174, 81, 51, 1);
+}
+textarea {
+  height: 5em;
+}
+button {
+  background-color: #621800;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  transition: box-shadow .2s ease, background-color .2s ease;
+}
+button:active {
+  background-color: #ae5133;
+}
+#formSubmitted {
+  height: 0;
+  overflow: hidden;
+}
+#formSubmitted:target {
+  height: auto;
+}
+
 @media (min-width: 1024px) {
   body {
     margin-left: 23rem;
@@ -186,10 +276,18 @@ h2 {
     left: 0;
     bottom: 0;
     width: 23rem;
+    box-shadow: 2px 0 5px #1E0700;
   }
   .siteHeader h1 {
     background-position: center top;
     margin: 1rem;
+    max-height: 50%;
+  }  
+  .date {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: 50%;
   }
   .siteNav {
     position: absolute;
@@ -208,10 +306,19 @@ h2 {
     background-attachment: scroll;
   }
 }
-
-.post > h2,
-.post > p {
-  max-width: 50rem;
-  margin-left: auto;
-  margin-right: auto;
+@media (max-width: 780px) {
+  .siteFooter {
+    text-align: left;
+    padding-left: 0;
+  }
+  .siteFooter a {
+    display: inline-block;
+    margin-left: 1rem;
+    padding-left: 2.3em;
+    white-space:nowrap;
+  }
+  .siteFooter a:not(:first-child) {
+    margin-left: 1rem;
+    margin-top: .5rem;
+  }
 }
