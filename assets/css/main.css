@@ -266,11 +266,11 @@ input[type="email"] {
 button:hover,
 textarea:hover,
 input[type="text"]:hover,
-input[type="mail"]:hover,
+input[type="email"]:hover,
 button:focus,
 textarea:focus,
 input[type="text"]:focus,
-input[type="mail"]:focus {
+input[type="email"]:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(174, 81, 51, 1);
 }
